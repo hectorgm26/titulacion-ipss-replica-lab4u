@@ -1,17 +1,15 @@
 import { Button, Icon, TextInput } from "@react-native-blossom-ui/components";
 import { useRouter } from "expo-router";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { View } from "react-native";
 import Toast from "react-native-toast-message";
-import { initialValues, validationSchema } from "./RegisterForm.data";
-import { styles } from "./RegisterForm.styles";
+import { initialValues, validationSchema } from "./LoginForm.data";
+import { styles } from "./LoginForm.styles";
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const router = useRouter();
 
   const formik = useFormik({
@@ -21,7 +19,7 @@ export default function RegisterForm() {
     onSubmit: async (formValue) => {
       try {
         const auth = getAuth();
-        await createUserWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           auth,
           formValue.email,
           formValue.password,
@@ -31,7 +29,7 @@ export default function RegisterForm() {
         Toast.show({
           type: "error",
           position: "bottom",
-          text1: "🚨 Error al registrar el usuario. Intente más tarde.",
+          text1: "🚨 Usuario o contraseña incorrectos.",
         });
         console.log(error);
       }
@@ -41,12 +39,12 @@ export default function RegisterForm() {
   return (
     <View style={styles.content}>
       <TextInput
-        textContentType="emailAddress"
         mode="flat"
-        placeholder="Ingrese su correo electrónico"
-        right={<Icon name="at" color="white" />}
+        placeholder="Correo electrónico"
+        textContentType="emailAddress"
         inputTextStyle={{ color: "white" }}
         size="large"
+        right={<Icon name="at" color="white" />}
         onChangeText={(text) => formik.setFieldValue("email", text)}
         value={formik.values.email}
         error={formik.touched.email ? formik.errors.email : ""}
@@ -56,9 +54,11 @@ export default function RegisterForm() {
       />
 
       <TextInput
-        textContentType="password"
         mode="flat"
-        placeholder="Ingrese su contraseña"
+        placeholder="Contraseña"
+        textContentType="password"
+        inputTextStyle={{ color: "white" }}
+        size="large"
         secureTextEntry={!showPassword}
         right={
           <Icon
@@ -67,8 +67,6 @@ export default function RegisterForm() {
             color="white"
           />
         }
-        inputTextStyle={{ color: "white" }}
-        size="large"
         onChangeText={(text) => formik.setFieldValue("password", text)}
         value={formik.values.password}
         error={formik.touched.password ? formik.errors.password : ""}
@@ -79,35 +77,9 @@ export default function RegisterForm() {
         }
       />
 
-      <TextInput
-        textContentType="password"
-        mode="flat"
-        placeholder="Repetir contraseña"
-        secureTextEntry={!showConfirmPassword}
-        right={
-          <Icon
-            name={showConfirmPassword ? "eye" : "eye-off"}
-            onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-            color="white"
-          />
-        }
-        inputTextStyle={{ color: "white" }}
-        size="large"
-        onChangeText={(text) => formik.setFieldValue("repeatPassword", text)}
-        value={formik.values.repeatPassword}
-        error={
-          formik.touched.repeatPassword ? formik.errors.repeatPassword : ""
-        }
-        status={
-          formik.touched.repeatPassword && formik.errors.repeatPassword
-            ? "error"
-            : "success"
-        }
-      />
-
       <View style={{ alignSelf: "center", marginTop: 20 }}>
         <Button
-          title="Registrarse"
+          title="Iniciar Sesión"
           style={styles.btn}
           onPress={() => formik.handleSubmit()}
           isLoading={formik.isSubmitting}

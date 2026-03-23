@@ -1,3 +1,4 @@
+import LoginForm from "@/components/Auth/LoginForm/LoginForm";
 import { Text } from "@react-native-blossom-ui/components";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
@@ -14,11 +15,14 @@ export default function LoginScreen() {
       />
 
       <View style={styles.content}>
-        <Text style={styles.text}>Estamos en el login</Text>
+        <LoginForm />
 
-        <Link href={"/Account/RegisterScreen/RegisterScreen"} asChild>
-          <Text style={styles.text}>Registrarse</Text>
-        </Link>
+        <Text style={styles.textRegister}>
+          ¿Aún no tienes cuenta?{" "}
+          <Link href={"/Account/RegisterScreen/RegisterScreen"} asChild>
+            <Text style={styles.btnRegister}>Regístrate</Text>
+          </Link>
+        </Text>
       </View>
     </ScrollView>
   );

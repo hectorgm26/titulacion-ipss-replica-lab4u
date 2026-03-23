@@ -8,8 +8,11 @@ import {
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
+import {
+    SafeAreaProvider,
+    useSafeAreaInsets,
+} from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 import "../utils/firebase";
 
 export const unstable_settings = {
@@ -22,23 +25,32 @@ export default function RootLayout() {
   const insets = useSafeAreaInsets();
 
   return (
-    <BlossomThemeProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            headerShadowVisible: false,
-            contentStyle: { marginTop: insets.top },
-          }}
+    <SafeAreaProvider>
+      <BlossomThemeProvider>
+        <ThemeProvider
+          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-          <Stack.Screen
-            name="(tabs)"
-            options={{ headerShown: false, headerShadowVisible: false }}
-          />
-        </Stack>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              headerShadowVisible: false,
+              contentStyle: { marginTop: insets.top },
+            }}
+          >
+            <Stack.Screen
+              name="(tabs)"
+              options={{ headerShown: false, headerShadowVisible: false }}
+            />
+          </Stack>
 
-        <StatusBar style="light" backgroundColor="black" translucent={false} />
-      </ThemeProvider>
-    </BlossomThemeProvider>
+          <StatusBar
+            style="light"
+            backgroundColor="black"
+            translucent={false}
+          />
+        </ThemeProvider>
+        <Toast />
+      </BlossomThemeProvider>
+    </SafeAreaProvider>
   );
 }

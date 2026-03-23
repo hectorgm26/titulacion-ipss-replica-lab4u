@@ -7,10 +7,16 @@ export const styles = StyleSheet.create({
     height: 150,
     marginTop: 20,
   },
-  text: {
-    color: "white",
-  },
   content: {
     marginHorizontal: 40,
+  },
+  textRegister: {
+    color: "white",
+    marginTop: 15,
+    marginHorizontal: 10,
+  },
+  btnRegister: {
+    color: "#00a680",
+    fontWeight: "bold",
   },
 });
