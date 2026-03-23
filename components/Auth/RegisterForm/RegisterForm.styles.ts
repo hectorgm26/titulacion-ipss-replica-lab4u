@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 30,
     width: "100%",
-    gap: 15,
+    gap: 25,
   },
   text: {
     color: "white",
