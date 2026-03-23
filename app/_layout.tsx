@@ -1,24 +1,44 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { BlossomThemeProvider } from "@react-native-blossom-ui/components";
+import {
+    DarkTheme,
+    DefaultTheme,
+    ThemeProvider,
+} from "@react-navigation/native";
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import "../utils/firebase";
 
 export const unstable_settings = {
-  anchor: '(tabs)',
+  anchor: "(tabs)",
 };
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
+  const insets = useSafeAreaInsets();
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <BlossomThemeProvider>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            headerShadowVisible: false,
+            contentStyle: { marginTop: insets.top },
+          }}
+        >
+          <Stack.Screen
+            name="(tabs)"
+            options={{ headerShown: false, headerShadowVisible: false }}
+          />
+        </Stack>
+
+        <StatusBar style="light" backgroundColor="black" translucent={false} />
+      </ThemeProvider>
+    </BlossomThemeProvider>
   );
 }
