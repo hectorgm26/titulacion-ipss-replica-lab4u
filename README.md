@@ -1,50 +1,164 @@
-# Welcome to your Expo app 👋
+# Proyecto Replicable de Práctica Profesional
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Contexto y justificación de esta implementación
 
-## Get started
+El proyecto real de práctica profesional fue desarrollado en **Lab4U**, empresa chilena de tecnología educativa, como desarrollador mobile nativo iOS utilizando **Swift, SwiftUI y UIKit**.
 
-1. Install dependencies
+La implementación original en la empresa incluyó:
+- Integración de **Firebase Cloud Messaging** con topics segmentados por perfil de usuario
+- Mejora del sistema de tracking de eventos con **Mixpanel** (llamado internamente "Lote 14")
 
-   ```bash
-   npm install
-   ```
+Sin embargo, para cumplir con el requisito institucional de entregar un **proyecto replicable y ejecutable por los profesores evaluadores**, el proyecto iOS original presenta las siguientes restricciones que lo hacen inviable para evaluación externa:
 
-2. Start the app
+### ¿Por qué el proyecto iOS no puede ser evaluado directamente?
 
-   ```bash
-   npx expo start
-   ```
+1. **Licencia de Apple Developer obligatoria** — Para que las push notifications funcionen en iOS, la app debe estar firmada con un certificado de Apple Developer. Esta licencia tiene un costo de **USD $99 al año** y debe ser contratada por el desarrollador o la empresa. Sin ella, las notificaciones push simplemente no funcionan.
 
-In the output, you'll find options to open the app in a
+2. **Requiere Mac obligatoriamente** — El desarrollo y compilación de apps iOS nativas requiere macOS con Xcode instalado. No existe forma de compilar ni correr un proyecto iOS en Windows o Linux. No todos los profesores evaluadores cuentan con un equipo Mac.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+3. **Requiere App Store Connect** — Para activar las capacidades de push notifications en iOS es necesario configurar manualmente certificates, provisioning profiles y APNs keys en el portal de Apple Developer y App Store Connect, un proceso que requiere acceso a la cuenta de la empresa y conocimiento técnico específico de iOS.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. **Backend propietario de Lab4U** — La arquitectura final del sistema en producción evolucionó a que el backend de la empresa maneja tokens FCM internos a través de endpoints propios. Estos endpoints son privados y no pueden ser expuestos a terceros fuera de la organización, lo que impide que un evaluador externo pueda correr el flujo completo.
 
-## Get a fresh project
+### Decisión tomada
 
-When you're ready, run:
+Previa conversación y acuerdo con el **profesor guía**, se decidió **replicar el proyecto desarrollado en la empresa** utilizando una tecnología accesible para cualquier evaluador: **React Native con Expo**, corriendo en Android.
+
+Esta decisión permite:
+- Correr el proyecto en **cualquier sistema operativo** (macOS, Windows, Linux)
+- No requerir licencias de pago
+- Usar un emulador Android gratuito incluido en Android Studio
+- Demostrar de forma funcional y evaluable los mismos conceptos técnicos implementados en la empresa: FCM topics, Mixpanel, autenticación con Firebase y arquitectura de perfil de usuario
+
+> **Importante:** Esta aplicación replica conceptualmente lo implementado en Lab4UApp (iOS). El proyecto real en la empresa ya fue desarrollado, desplegado a producción y documentado en el informe de práctica correspondiente.
+
+---
+
+## Requisitos previos del sistema
+
+Antes de correr el proyecto, asegúrate de tener instalado lo siguiente:
+
+### Software obligatorio
+
+| Herramienta | Versión mínima | Descarga |
+|---|---|---|
+| Node.js | 18 o superior | https://nodejs.org |
+| Android Studio | Ladybug (2024) o superior | https://developer.android.com/studio |
+| JDK | 17 | incluido en Android Studio |
+
+### Dentro de Android Studio
+
+1. Abre Android Studio → **SDK Manager** (ícono en la barra superior)
+2. En la pestaña **SDK Platforms**, instala **Android 14 (API 34)**
+3. En la pestaña **SDK Tools**, verifica que estén instalados:
+   - Android SDK Build-Tools
+   - Android Emulator
+   - Android SDK Platform-Tools
+
+### Variables de entorno (macOS/Linux)
+
+Agrega esto a tu `~/.zshrc` o `~/.bashrc`:
 
 ```bash
-npm run reset-project
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Luego recarga con `source ~/.zshrc`.
 
-## Learn more
+### Variables de entorno (Windows)
 
-To learn more about developing your project with Expo, look at the following resources:
+En Variables de entorno del sistema agrega:
+- `ANDROID_HOME` → `C:\Users\TuUsuario\AppData\Local\Android\Sdk`
+- Agrega a `PATH` → `%ANDROID_HOME%\platform-tools`
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## Instalación y ejecución
 
-Join our community of developers creating universal apps.
+### 1. Clonar el repositorio
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+git clone https://github.com/tu-usuario/tu-repositorio.git
+cd tu-repositorio
+```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Generar código nativo Android
+
+Este comando genera la carpeta `android/` con la configuración nativa necesaria para Firebase Messaging. Solo es necesario la primera vez o cuando se modifique `app.json`:
+
+```bash
+npx expo prebuild --clean --platform android
+```
+
+> Si pregunta por el package name, confirma: `com.anonymous.Abogando`
+
+### 4. Crear y abrir un emulador Android
+
+1. Abre **Android Studio**
+2. Click en **Device Manager** (ícono de teléfono en la barra derecha)
+3. Click **"+"** → **Create Virtual Device**
+4. Elige **Pixel 8** → Next
+5. Elige sistema operativo **Android 14 (API 34)** → Next → Finish
+6. Click el ícono ▶ para iniciar el emulador
+
+### 5. Correr la aplicación
+
+Con el emulador corriendo:
+
+```bash
+npx expo run:android
+```
+
+La primera compilación tarda entre 5 y 10 minutos. Las siguientes son más rápidas.
+
+---
+
+## Flujo de uso para demostración
+
+Una vez que la app esté corriendo:
+
+1. **Cuenta** → Regístrate o inicia sesión con email y contraseña
+2. **Plan de Usuario** → Elige si eres Estudiante o Profesor, y si quieres plan Free o Premium
+3. **Notificaciones** → Activa el toggle para suscribirte al topic de Firebase Messaging
+4. **Herramientas** → Explora las herramientas disponibles (las Premium requieren plan Premium)
+
+### Topics activos de Firebase por perfil
+
+El topic al que se suscribe el dispositivo se construye automáticamente según el perfil elegido:
+
+```
+usergroup_FREE_usertype_STUDENT_lang_es
+usergroup_FREE_usertype_TEACHER_lang_es
+usergroup_PREMIUM_usertype_STUDENT_lang_es
+usergroup_PREMIUM_usertype_TEACHER_lang_es
+```
+
+Para enviar una notificación de prueba: Firebase Console → Messaging → New campaign → Notification → Target: Topic → escribe el topic correspondiente al perfil elegido.
+
+---
+
+## Tecnologías utilizadas
+
+- **React Native + Expo SDK 54** — framework móvil multiplataforma
+- **Expo Router** — navegación basada en archivos
+- **Firebase Auth** — autenticación de usuarios
+- **@react-native-firebase/messaging** — push notifications con FCM topics
+- **Mixpanel** — tracking de eventos de usuario
+- **AsyncStorage** — persistencia local de perfil y notificaciones
+- **TypeScript** — tipado estático
+
+---
+
+## Notas importantes
+
+- El proyecto requiere **build nativo** (`npx expo run:android`) para que funcionen las push notifications reales. No funciona con Expo Go para esta funcionalidad específica.
+- El resto de la app (autenticación, herramientas, Mixpanel) sí funciona en Expo Go con `npx expo start`.
+- El archivo `google-services.json` está incluido en el repositorio para facilitar la evaluación.
