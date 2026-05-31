@@ -34,6 +34,10 @@ const MAPPING = {
 
   "heart.fill": "favorite",
   heart: "favorite-border",
+
+  "creditcard.fill": "credit-card",
+  "bell.fill": "notifications",
+  "wrench.fill": "build",
 } as IconMapping;
 
 /**

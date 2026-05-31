@@ -1,3 +1,5 @@
+import { ToolsAnalytics } from "@/lib/analytics/toolsAnalytics";
+import { clearUserProfile } from "@/lib/userProfile";
 import { Button, Icon, TextInput } from "@react-native-blossom-ui/components";
 import { useRouter } from "expo-router";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
@@ -11,7 +13,6 @@ import { styles } from "./RegisterForm.styles";
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const router = useRouter();
 
   const formik = useFormik({
@@ -26,7 +27,12 @@ export default function RegisterForm() {
           formValue.email,
           formValue.password,
         );
-        router.navigate("/(tabs)/Account");
+        await clearUserProfile();
+
+        ToolsAnalytics.registerSuccess();
+        // Dismiss entire Account stack first, then navigate to Deal
+        router.dismissAll();
+        router.replace("/(tabs)/Deal?newUser=true");
       } catch (error) {
         Toast.show({
           type: "error",

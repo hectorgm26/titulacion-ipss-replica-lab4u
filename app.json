@@ -6,12 +6,18 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "abogando",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "userInterfaceStyle": "dark",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.Abogando"
     },
     "android": {
+      "package": "com.anonymous.Abogando",
+      "googleServicesFile": "./google-services.json",
+      "backgroundColor": "#000000",
+      "userInterfaceStyle": "dark",
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -34,12 +40,22 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#000000",
           "dark": {
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      [
+        "@react-native-firebase/app",
+        {
+          "ios": {
+            "enabled": false
+          }
+        }
+      ],
+      "@react-native-firebase/messaging",
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true,

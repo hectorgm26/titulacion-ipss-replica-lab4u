@@ -20,16 +20,15 @@ export default function UserGuestScreen() {
         source={require("../../../../assets/images/user-guest.png")}
         style={styles.image}
       />
-      <Text style={styles.title}>Consultar tu perfil de Abogando</Text>
+      <Text style={styles.title}>¡Bienvenido a Lab4U!</Text>
       <Text style={styles.description}>
-        ¿Como describirias el mejor abogado?. Busca los mejores abogados de
-        Chile de una forma sencilla, vota cual te ha dado el mejor servicio y
-        comenta tu experiencia con otros usuarios.
+        Aprende ciencias con tu smartphone. Únete a Lab4U y descubre nuevas
+        herramientas y experimentos antes que nadie.
       </Text>
 
       <View>
         <Link href={"/Account/LoginScreen/LoginScreen"} asChild>
-          <Button title="Ver tu perfil" style={styles.btnStyle} />
+          <Button title="Iniciar Sesión" style={styles.btnStyle} />
         </Link>
       </View>
     </ScrollView>

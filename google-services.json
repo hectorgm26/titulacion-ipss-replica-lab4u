@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "754839949954",
+    "project_id": "abogando-v1",
+    "storage_bucket": "abogando-v1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754839949954:android:2f90f635d966d0098a9a9b",
+        "android_client_info": {
+          "package_name": "com.anonymous.Abogando"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEe1ZaudjkXTbHXHl-5OLJQTodLBRYiJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

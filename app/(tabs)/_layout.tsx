@@ -11,7 +11,7 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      initialRouteName="Abogados"
+      initialRouteName="Account"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         tabBarButton: HapticTab,
@@ -20,38 +20,29 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="Abogados"
+        name="Deal"
         options={{
-          title: "Abogados",
+          title: "Plan de Usuario",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="briefcase.fill" color={color} />
+            <IconSymbol size={28} name="creditcard.fill" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="Favorites"
+        name="Notificaciones"
         options={{
-          title: "Favoritos",
+          title: "Notificaciones",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="heart.fill" color={color} />
+            <IconSymbol size={28} name="bell.fill" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="Ranking"
+        name="Tools"
         options={{
-          title: "Top 5",
+          title: "Herramientas",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="star.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="Search"
-        options={{
-          title: "Buscar",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="magnifyingglass" color={color} />
+            <IconSymbol size={28} name="wrench.fill" color={color} />
           ),
         }}
       />

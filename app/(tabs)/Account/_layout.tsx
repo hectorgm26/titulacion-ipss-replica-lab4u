@@ -11,6 +11,7 @@ export default function AccountLayout() {
         fullScreenGestureEnabled: true,
         gestureDirection: "horizontal",
         headerShadowVisible: false,
+        headerBackVisible: false,
       }}
     >
       <Stack.Screen name="index" options={{ title: "Cuenta" }} />

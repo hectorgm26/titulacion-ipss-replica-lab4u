@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-export default function AbogadosLayout() {
+export default function DealLayout() {
   return (
     <Stack
       screenOptions={{
@@ -13,8 +13,7 @@ export default function AbogadosLayout() {
         headerShadowVisible: false,
       }}
     >
-      <Stack.Screen name="index" options={{ title: "Abogados" }} />
-      <Stack.Screen name="AddAbogadoScreen" options={{ title: "Agregar" }} />
+      <Stack.Screen name="index" options={{ title: "Plan de Usuario" }} />
     </Stack>
   );
 }

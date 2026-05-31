@@ -1,3 +1,4 @@
+import { ToolsAnalytics } from "@/lib/analytics/toolsAnalytics";
 import { Button, Icon, TextInput } from "@react-native-blossom-ui/components";
 import { useRouter } from "expo-router";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -24,7 +25,11 @@ export default function LoginForm() {
           formValue.email,
           formValue.password,
         );
-        router.navigate("/(tabs)/Account");
+
+        ToolsAnalytics.loginSuccess();
+        // Dismiss entire Account stack first, then navigate to Deal
+        router.dismissAll();
+        router.replace("/(tabs)/Deal");
       } catch (error) {
         Toast.show({
           type: "error",
