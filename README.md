@@ -55,6 +55,7 @@ Antes de correr el proyecto, asegúrate de tener instalado lo siguiente:
    - Android SDK Build-Tools
    - Android Emulator
    - Android SDK Platform-Tools
+   - Android SDK Command-line Tools
 
 ### Variables de entorno (macOS/Linux)
 
