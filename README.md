@@ -62,6 +62,12 @@ Antes de correr el proyecto, asegúrate de tener instalado lo siguiente:
 Agrega esto a tu `~/.zshrc` o `~/.bashrc`:
 
 ```bash
+open -e ~/.zshrc
+```
+
+Después pega lo siguiente
+
+```bash
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
