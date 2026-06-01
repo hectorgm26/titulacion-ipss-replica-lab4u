@@ -45,7 +45,7 @@ Antes de correr el proyecto, asegúrate de tener instalado lo siguiente:
 |---|---|---|
 | Node.js | 18 o superior | https://nodejs.org |
 | Android Studio | Ladybug (2024) o superior | https://developer.android.com/studio |
-| JDK | 17 | incluido en Android Studio |
+| JDK | 17 o 21 | incluido en Android Studio |
 
 ### Dentro de Android Studio
 
