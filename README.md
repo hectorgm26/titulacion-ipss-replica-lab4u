@@ -59,7 +59,7 @@ Antes de correr el proyecto, asegúrate de tener instalado lo siguiente:
 
 ### Variables de entorno (macOS/Linux)
 
-Agrega esto a tu `~/.zshrc` o `~/.bashrc`:
+Agrega esto a tu `~/.zshrc` o `~/.bashrc` mediante el comando:
 
 ```bash
 open -e ~/.zshrc
