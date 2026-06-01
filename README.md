@@ -128,6 +128,8 @@ Una vez que la app esté corriendo:
 1. **Cuenta** → Regístrate o inicia sesión con email y contraseña
 2. **Plan de Usuario** → Elige si eres Estudiante o Profesor, y si quieres plan Free o Premium
 3. **Notificaciones** → Activa el toggle para suscribirte al topic de Firebase Messaging
+   - Al entrar a la pantalla, se debe activar el toggle, luego saldra un mensaje de que es necesario ir a los ajustes del sistema.
+   - Al aparecer ese mensaje, se debe apretar el boton Ajustes, y luego ir al apartado de Notificaciones, y activar el boton toggle. De esta forma la app ya podrá recibirlas.
 4. **Herramientas** → Explora las herramientas disponibles (las Premium requieren plan Premium)
 
 ### Topics activos de Firebase por perfil
