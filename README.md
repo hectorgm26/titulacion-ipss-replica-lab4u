@@ -5,7 +5,7 @@
 El proyecto real de práctica profesional fue desarrollado en **Lab4U**, empresa chilena de tecnología educativa, como desarrollador mobile nativo iOS utilizando **Swift, SwiftUI y UIKit**.
 
 La implementación original en la empresa incluyó:
-- Integración de **Firebase Cloud Messaging** con topics segmentados por perfil de usuario
+- Integración de **Firebase Cloud Messaging** con topics segmentados por perfil de usuario. No obstante luego se migró a una solución hibrida, donde el areá de backend de la empresa, interactua mediante endpoints internos con los servicios de Firebase, mientras que mobile solo consume esos endpoints para la recepción de notificaciones.
 - Mejora del sistema de tracking de eventos con **Mixpanel** (llamado internamente "Lote 14")
 
 Sin embargo, para cumplir con el requisito institucional de entregar un **proyecto replicable y ejecutable por los profesores evaluadores**, el proyecto iOS original presenta las siguientes restricciones que lo hacen inviable para evaluación externa:
@@ -14,7 +14,7 @@ Sin embargo, para cumplir con el requisito institucional de entregar un **proyec
 
 1. **Licencia de Apple Developer obligatoria** — Para que las push notifications funcionen en iOS, la app debe estar firmada con un certificado de Apple Developer. Esta licencia tiene un costo de **USD $99 al año** y debe ser contratada por el desarrollador o la empresa. Sin ella, las notificaciones push simplemente no funcionan.
 
-2. **Requiere Mac obligatoriamente** — El desarrollo y compilación de apps iOS nativas requiere macOS con Xcode instalado. No existe forma de compilar ni correr un proyecto iOS en Windows o Linux. No todos los profesores evaluadores cuentan con un equipo Mac.
+2. **Requiere Mac obligatoriamente** — El desarrollo y compilación de apps iOS nativas requiere obligatoriamente del sistema macOS (solo disponible en dispositivos MAC), con Xcode instalado. No existe forma de compilar ni correr un proyecto iOS en Windows o Linux. No todos los profesores evaluadores cuentan con un equipo Mac.
 
 3. **Requiere App Store Connect** — Para activar las capacidades de push notifications en iOS es necesario configurar manualmente certificates, provisioning profiles y APNs keys en el portal de Apple Developer y App Store Connect, un proceso que requiere acceso a la cuenta de la empresa y conocimiento técnico específico de iOS.
 
@@ -92,7 +92,7 @@ npm install
 
 ### 3. Generar código nativo Android
 
-Este comando genera la carpeta `android/` con la configuración nativa necesaria para Firebase Messaging. Solo es necesario la primera vez o cuando se modifique `app.json`:
+Este comando genera la carpeta `android/` con la configuración nativa necesaria para Firebase Messaging. Solo es necesario la primera vez o cuando se modifica el archivo `app.json`:
 
 ```bash
 npx expo prebuild --clean --platform android
