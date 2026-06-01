@@ -65,7 +65,7 @@ Agrega esto a tu `~/.zshrc` o `~/.bashrc` mediante el comando:
 open -e ~/.zshrc
 ```
 
-Después pega lo siguiente
+Después pega lo siguiente:
 
 ```bash
 export ANDROID_HOME=$HOME/Library/Android/sdk
