@@ -27,6 +27,7 @@ Previa conversación y acuerdo con el **profesor guía**, se decidió **replicar
 Esta decisión permite:
 - Correr el proyecto en **cualquier sistema operativo** (macOS, Windows, Linux)
 - No requerir licencias de pago
+- No depender de un backend propio de una empresa, con sus endpoints privados, simulando este mismo comportamiento mediante AsyncStorage local
 - Usar un emulador Android gratuito incluido en Android Studio
 - Demostrar de forma funcional y evaluable los mismos conceptos técnicos implementados en la empresa: FCM topics, Mixpanel, autenticación con Firebase y arquitectura de perfil de usuario
 
