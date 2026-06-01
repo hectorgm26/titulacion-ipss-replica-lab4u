@@ -13,6 +13,7 @@ export const TOOL_EVENTS = {
   START_MEASUREMENT_SUCCESS: "Start_a_measurement",
 
   END_A_MEASUREMENT: "End_a_measurement",
+  SAVE_A_MEASUREMENT: "Save_a_measurement",
 
   RETRY_A_MEASUREMENT: "Retry_a_measurement",
 

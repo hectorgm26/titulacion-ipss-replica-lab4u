@@ -202,4 +202,15 @@ export const ToolsAnalytics = {
       event_type: "Success",
     });
   },
+
+  saveMeasurement(id: string) {
+    track(TOOL_EVENTS.SAVE_A_MEASUREMENT, {
+      ...baseProps(),
+      view_name: "Tool Results",
+      event_version: 1,
+      event_id: 505,
+      event_type: "Click",
+      tool_id: toolId(id),
+    });
+  },
 };

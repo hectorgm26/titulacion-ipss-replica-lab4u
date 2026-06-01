@@ -39,6 +39,7 @@ export default function ResultScreen() {
       data: sensorData,
     };
     await saveMeasurement(measurement);
+    ToolsAnalytics.saveMeasurement(tool);
     setSaving(false);
     setSaved(true);
     Alert.alert("✅ Guardado", "La medición fue guardada exitosamente.", [
