@@ -80,6 +80,8 @@ Luego recarga con `source ~/.zshrc`.
 En Variables de entorno del sistema agrega:
 - `ANDROID_HOME` → `C:\Users\TuUsuario\AppData\Local\Android\Sdk`
 - Agrega a `PATH` → `%ANDROID_HOME%\platform-tools`
+- Agrega a `PATH` → `%ANDROID_HOME%\emulator`
+- Agrega a `PATH` → `%ANDROID_HOME%\cmdline-tools\latest\bin`
 
 ---
 
