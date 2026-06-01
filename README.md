@@ -90,8 +90,8 @@ En Variables de entorno del sistema agrega:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
+git clone https://github.com/hectorgm26/titulacion-ipss-replica-lab4u.git
+cd titulacion-ipss-replica-lab4u
 ```
 
 ### 2. Instalar dependencias
