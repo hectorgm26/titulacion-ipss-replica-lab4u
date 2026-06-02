@@ -155,6 +155,8 @@ usergroup_PREMIUM_usertype_TEACHER_lang_es
 
 Para enviar una notificación de prueba: Firebase Console → Messaging → New campaign → Notification → Target: Topic → escribe el topic correspondiente al perfil elegido.
 
+Es clave seleccionar en Programation → Send now, para testear el envío de inmediato (tienen un delay, a veces demoran minutos en llegar, otras veces es instantanea la notificación en el dispositivo)
+
 ---
 
 ## Tecnologías utilizadas
