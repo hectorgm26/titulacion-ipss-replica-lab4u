@@ -33,6 +33,20 @@ Esta decisión permite:
 
 > **Importante:** Esta aplicación replica conceptualmente lo implementado en Lab4UApp (iOS). El proyecto real en la empresa ya fue desarrollado, desplegado a producción y documentado en el informe de práctica correspondiente.
 
+## Accesos a plataformas externas
+
+Para facilitar la evaluación del proyecto replicable, las plataformas externas utilizadas durante la demostración son las siguientes:
+
+Firebase Console: https://console.firebase.google.com
+
+Mixpanel: https://mixpanel.com
+
+Por motivos de seguridad, las credenciales de acceso asociadas a estas plataformas no se incluyen en este documento ni en el repositorio público. 
+
+El correo de acceso y la contraseña fueron incorporados exclusivamente en el informe final entregado al proceso de evaluación, con el fin de resguardar el uso de servicios de terceros y evitar su exposición innecesaria.
+
+En caso de que el evaluador requiera revisar directamente la configuración del proyecto en Firebase Console o la validación del tracking en Mixpanel, deberá utilizar las credenciales informadas en dicho informe final.
+
 ---
 
 ## Requisitos previos del sistema
