@@ -99,9 +99,9 @@ En Variables de entorno del sistema agrega:
 
 ---
 
-## Instalación y ejecución
+## Instrucciones de instalación y ejecución
 
-### 1. Clonar el repositorio
+### 1. Clonar el repositorio para obtener el código fuente
 
 ```bash
 git clone https://github.com/hectorgm26/titulacion-ipss-replica-lab4u.git
