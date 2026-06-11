@@ -16,7 +16,7 @@ Sin embargo, para cumplir con el requisito institucional de entregar un **proyec
 
 2. **Requiere Mac obligatoriamente** — El desarrollo y compilación de apps iOS nativas requiere obligatoriamente del sistema macOS (solo disponible en dispositivos MAC), con Xcode instalado. No existe forma de compilar ni correr un proyecto iOS en Windows o Linux. No todos los profesores evaluadores cuentan con un equipo Mac.
 
-3. **Requiere App Store Connect** — Para activar las capacidades de push notifications en iOS es necesario configurar manualmente certificates, provisioning profiles y APNs keys en el portal de Apple Developer y App Store Connect, un proceso que requiere acceso a la cuenta de la empresa y conocimiento técnico específico de iOS.
+3. **Requiere App Store Connect** — Para activar las capacidades de push notifications en iOS es necesario configurar manualmente certificates, provisioning profiles y APNs keys en el portal de Apple Developer y App Store Connect, un proceso que requiere acceso a la cuenta de la empresa.
 
 4. **Backend propietario de Lab4U** — La arquitectura final del sistema en producción evolucionó a que el backend de la empresa maneja tokens FCM internos a través de endpoints propios. Estos endpoints son privados y no pueden ser expuestos a terceros fuera de la organización, lo que impide que un evaluador externo pueda correr el flujo completo.
 
@@ -35,7 +35,7 @@ Esta decisión permite:
 
 ## Accesos a plataformas externas
 
-Para facilitar la evaluación del proyecto replicable, las plataformas externas utilizadas durante la demostración son las siguientes:
+Las plataformas externas utilizadas durante la demostración son las siguientes:
 
 Firebase Console: https://console.firebase.google.com
 
